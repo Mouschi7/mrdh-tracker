@@ -1,0 +1,754 @@
+/* ! MRDH STAFF LOGIN PAGE */
+
+/* Global Variables */
+
+:root {
+      --navy: #0b3a5b;
+      --blue: #1769aa;
+      --blue-dark: #0f5388;
+
+      --ink: #1b2a38;
+      --muted: #5b6b7a;
+
+      --line: #9fb3c4;
+
+      --white: #ffffff;
+      --cream: #faf4ee;
+
+      --bad: #b3261e;
+      --bad-bg: #fbe5e3;
+}
+
+/* Reset */
+
+*,
+*::before,
+*::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+}
+
+html {
+      min-height: 100%;
+}
+
+body {
+      min-height: 100vh;
+
+      font-family: "Manrope", sans-serif;
+      font-optical-sizing: auto;
+
+      color: var(--ink);
+      background: var(--cream);
+
+      line-height: 1.5;
+
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input {
+      font: inherit;
+      color: inherit;
+}
+
+button {
+      border: 0;
+      background: none;
+      cursor: pointer;
+}
+
+a {
+      color: var(--blue);
+}
+
+[hidden] {
+      display: none !important;
+}
+
+:focus-visible {
+      outline: 3px solid #f2a900;
+      outline-offset: 2px;
+}
+
+/* Split-Screen Layout */
+
+.login-container {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      min-height: 100vh;
+}
+
+/* Left Hero Panel */
+
+.hero {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100vh;
+      padding: clamp(2.5rem, 5vw, 4.5rem);
+      color: var(--white);
+      background: linear-gradient(155deg,
+                  #0b3a5b 0%,
+                  #12578a 60%,
+                  #1769aa 100%);
+}
+
+/* HOSPITAL BRAND*/
+
+.brand {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.05rem;
+      font-weight: 800;
+}
+
+.brand-mark {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      border-radius: 9px;
+      background: var(--white);
+      color: var(--blue);
+      font-size: 1.1rem;
+}
+
+.brand-name {
+      white-space: nowrap;
+}
+
+/* Hero Content */
+
+.hero-content {
+      position: relative;
+      z-index: 2;
+      margin-top: auto;
+      margin-bottom: auto;
+}
+
+.hero h1 {
+      max-width: 12ch;
+      margin: clamp(2rem, 6vh, 4rem) 0 1.1rem;
+      font-size: clamp(2.5rem, 4.2vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.02;
+      letter-spacing: -0.035em;
+}
+
+.hero p {
+      max-width: 43ch;
+
+      font-size: 0.95rem;
+
+      font-weight: 500;
+
+      line-height: 1.55;
+
+      color: #d3e6f5;
+}
+
+
+/* ============================================================
+   7. HERO BOTTOM FEATURES
+   ============================================================ */
+
+.hero-foot {
+      position: relative;
+      z-index: 2;
+
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 1rem 3.5rem;
+
+      margin-top: auto;
+
+      padding-top: 2rem;
+}
+
+
+.hero-badge {
+      display: flex;
+      flex-direction: column;
+
+      gap: 0.05rem;
+
+      color: #b9d5ea;
+
+      font-size: 0.85rem;
+
+      line-height: 1.4;
+}
+
+
+.hero-badge strong {
+      color: var(--white);
+
+      font-size: 1.05rem;
+
+      font-weight: 800;
+}
+
+
+/* ============================================================
+   8. DECORATIVE MEDICAL GRAPHIC
+   ============================================================ */
+
+.hero-graphic {
+      position: absolute;
+
+      right: -75px;
+      bottom: -70px;
+
+      width: 390px;
+      height: 390px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      pointer-events: none;
+
+      color: rgba(255, 255, 255, 0.14);
+
+      font-size: 175px;
+}
+
+
+.hero-graphic::before {
+      content: "";
+
+      position: absolute;
+
+      width: 120px;
+      height: 335px;
+
+      border: 6px solid rgba(255, 255, 255, 0.10);
+}
+
+
+.hero-graphic::after {
+      content: "";
+
+      position: absolute;
+
+      width: 335px;
+      height: 120px;
+
+      border: 6px solid rgba(255, 255, 255, 0.10);
+}
+
+
+.hero-graphic i {
+      position: relative;
+      z-index: 2;
+
+      color: rgba(255, 255, 255, 0.12);
+}
+
+
+/* ============================================================
+   9. RIGHT LOGIN PANEL
+   ============================================================ */
+
+.login-panel {
+      display: grid;
+
+      place-items: center;
+
+      min-height: 100vh;
+
+      padding: 2rem 1.5rem;
+
+      background: var(--white);
+}
+
+
+/* ============================================================
+   10. LOGIN CARD
+   ============================================================ */
+
+.card {
+      width: 100%;
+
+      max-width: 420px;
+}
+
+
+/* ============================================================
+   11. LOGIN HEADER
+   ============================================================ */
+
+.card-header h2 {
+      margin-bottom: 0.35rem;
+
+      font-size: 2rem;
+
+      font-weight: 700;
+
+      line-height: 1.15;
+
+      letter-spacing: -0.025em;
+
+      color: var(--ink);
+}
+
+
+.card-header p {
+      margin-bottom: 2rem;
+
+      color: var(--muted);
+
+      font-size: 0.9rem;
+
+      font-weight: 500;
+}
+
+
+/* ============================================================
+   12. FORM ALERT
+   ============================================================ */
+
+.alert {
+      margin-bottom: 1.25rem;
+
+      padding: 0.75rem 0.95rem;
+
+      border-radius: 6px;
+
+      background: var(--bad-bg);
+
+      color: var(--bad);
+
+      font-size: 0.9rem;
+}
+
+
+/* ============================================================
+   13. FORM FIELDS
+   ============================================================ */
+
+.field {
+      margin-bottom: 1.2rem;
+}
+
+
+.field>label {
+      display: block;
+
+      margin-bottom: 0.4rem;
+
+      color: var(--ink);
+
+      font-size: 0.82rem;
+
+      font-weight: 700;
+}
+
+
+/* ============================================================
+   14. INPUT WRAPPER
+   ============================================================ */
+
+.input-wrapper {
+      position: relative;
+}
+
+
+.input-wrapper input {
+      width: 100%;
+
+      min-height: 48px;
+
+      padding: 0.7rem 2.8rem;
+
+      border: 1px solid var(--line);
+
+      border-radius: 6px;
+
+      background: #fff;
+
+      font-size: 0.9rem;
+
+      outline: none;
+
+      transition:
+            border-color 0.15s ease,
+            box-shadow 0.15s ease;
+}
+
+
+.input-wrapper input::placeholder {
+      color: #8795a1;
+}
+
+
+.input-wrapper input:focus {
+      border-color: var(--blue);
+
+      box-shadow:
+            0 0 0 3px rgba(23, 105, 170, 0.12);
+}
+
+
+/* ============================================================
+   15. INPUT ICON
+   ============================================================ */
+
+.input-icon {
+      position: absolute;
+
+      left: 0.85rem;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      color: #6d7c89;
+
+      pointer-events: none;
+
+      z-index: 2;
+}
+
+
+/* ============================================================
+   16. PASSWORD TOGGLE
+   ============================================================ */
+
+.toggle-password {
+      position: absolute;
+
+      top: 50%;
+      right: 2px;
+
+      width: 44px;
+      height: 44px;
+
+      transform: translateY(-50%);
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 6px;
+
+      color: #6d7c89;
+}
+
+
+.toggle-password:hover {
+      color: var(--ink);
+}
+
+
+.toggle-password:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: -2px;
+}
+
+
+/* ============================================================
+   17. ERROR MESSAGE
+   ============================================================ */
+
+.error-message {
+      margin-top: 0.3rem;
+
+      color: var(--bad);
+
+      font-size: 0.8rem;
+}
+
+
+/* ============================================================
+   18. REMEMBER ME / FORGOT PASSWORD
+   ============================================================ */
+
+.form-row {
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 1rem;
+
+      margin-bottom: 1.4rem;
+}
+
+
+.checkbox-label {
+      display: flex;
+
+      align-items: center;
+
+      gap: 0.5rem;
+
+      color: var(--muted);
+
+      font-size: 0.82rem;
+
+      cursor: pointer;
+}
+
+
+.checkbox-label input {
+      width: 15px;
+      height: 15px;
+
+      accent-color: var(--blue);
+
+      cursor: pointer;
+}
+
+
+.forgot-link {
+      color: var(--blue);
+
+      font-size: 0.82rem;
+
+      font-weight: 600;
+
+      text-decoration: underline;
+}
+
+
+.forgot-link:hover {
+      color: var(--blue-dark);
+}
+
+
+/* ============================================================
+   19. SIGN IN BUTTON
+   ============================================================ */
+
+.btn {
+      width: 100%;
+
+      min-height: 48px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 0.6rem;
+
+      border-radius: 6px;
+
+      background: var(--blue);
+
+      color: var(--white);
+
+      font-size: 0.9rem;
+
+      font-weight: 700;
+
+      transition:
+            background 0.15s ease,
+            transform 0.1s ease;
+}
+
+
+.btn:hover {
+      background: var(--blue-dark);
+}
+
+
+.btn:active {
+      transform: translateY(1px);
+}
+
+
+.btn:disabled {
+      opacity: 0.8;
+
+      cursor: progress;
+}
+
+
+.btn-icon {
+      display: flex;
+      align-items: center;
+}
+
+
+/* ============================================================
+   20. LOADING SPINNER
+   ============================================================ */
+
+.spinner {
+      width: 18px;
+      height: 18px;
+
+      border: 2px solid rgba(255, 255, 255, 0.4);
+
+      border-top-color: #fff;
+
+      border-radius: 50%;
+
+      animation: spin 0.7s linear infinite;
+}
+
+
+@keyframes spin {
+      to {
+            transform: rotate(360deg);
+      }
+}
+
+
+/* ============================================================
+   21. FOOTER
+   ============================================================ */
+
+.card-footer {
+      margin-top: 1.6rem;
+
+      text-align: center;
+
+      color: var(--muted);
+
+      font-size: 0.8rem;
+}
+
+
+.card-footer small {
+      font-size: inherit;
+}
+
+
+/* ============================================================
+   22. RESPONSIVE - TABLET
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+      .login-container {
+            grid-template-columns: 1fr;
+      }
+
+
+      .hero {
+            min-height: auto;
+
+            padding: 2rem 1.5rem 2.5rem;
+      }
+
+
+      .hero-content {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+      }
+
+
+      .hero h1 {
+            max-width: 15ch;
+
+            margin: 0 0 1rem;
+
+            font-size: 2.5rem;
+      }
+
+
+      .hero-foot {
+            padding-top: 0;
+      }
+
+
+      .hero-graphic {
+            right: -100px;
+            bottom: -100px;
+
+            opacity: 0.7;
+      }
+
+
+      .login-panel {
+            min-height: auto;
+
+            padding: 3rem 1.5rem;
+      }
+}
+
+
+/* ============================================================
+   23. RESPONSIVE - MOBILE
+   ============================================================ */
+
+@media (max-width: 480px) {
+
+      .brand {
+            font-size: 0.95rem;
+      }
+
+
+      .brand-mark {
+            width: 36px;
+            height: 36px;
+      }
+
+
+      .hero {
+            padding: 1.5rem 1.25rem 2rem;
+      }
+
+
+      .hero h1 {
+            font-size: 2.15rem;
+      }
+
+
+      .hero p {
+            font-size: 0.88rem;
+      }
+
+
+      .hero-foot {
+            display: none;
+      }
+
+
+      .hero-graphic {
+            display: none;
+      }
+
+
+      .login-panel {
+            padding: 2rem 1.25rem 3rem;
+      }
+
+
+      .card-header h2 {
+            font-size: 1.75rem;
+      }
+
+
+      .form-row {
+            align-items: flex-start;
+      }
+}
+
+
+/* ============================================================
+   24. REDUCE MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+
+            transition-duration: 0.01ms !important;
+      }
+}
