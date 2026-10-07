@@ -3,20 +3,15 @@
 /* Global Variables */
 
 :root {
-      --navy: #0b3a5b;
-      --blue: #1769aa;
-      --blue-dark: #0f5388;
-
-      --ink: #1b2a38;
-      --muted: #5b6b7a;
-
-      --line: #9fb3c4;
-
+      --green: #00883a;
+      --green-dark: #006b2d;
+      --green-soft: #eef8f1;
+      --text: #1f2933;
+      --muted: #667085;
+      --border: #c8d8ce;
       --white: #ffffff;
-      --cream: #faf4ee;
-
-      --bad: #b3261e;
-      --bad-bg: #fbe5e3;
+      --bad: #b42318;
+      --bad-bg: #fef3f2;
 }
 
 /* Reset */
@@ -29,23 +24,26 @@
       padding: 0;
 }
 
+html,
+body {
+      width: 100%;
+      height: 100%;
+}
+
 html {
-      min-height: 100%;
+      overflow: hidden;
 }
 
 body {
       min-height: 100vh;
-
       font-family: "Manrope", sans-serif;
       font-optical-sizing: auto;
-
-      color: var(--ink);
-      background: var(--cream);
-
+      color: var(--text);
+      background: var(--white);
       line-height: 1.5;
-
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      overflow: hidden;
 }
 
 button,
@@ -61,15 +59,15 @@ button {
 }
 
 a {
-      color: var(--blue);
+      color: var(--green);
 }
 
 [hidden] {
       display: none !important;
 }
 
-:focus-visible {
-      outline: 3px solid #f2a900;
+*:focus-visible {
+      outline: 3px solid rgba(0, 136, 58, 0.3);
       outline-offset: 2px;
 }
 
@@ -77,8 +75,11 @@ a {
 
 .login-container {
       display: grid;
-      grid-template-columns: 1.1fr 1fr;
+      grid-template-columns: 1.08fr 1fr;
+      width: 100%;
+      height: 100vh;
       min-height: 100vh;
+      overflow: hidden;
 }
 
 /* Left Hero Panel */
@@ -89,13 +90,16 @@ a {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 100vh;
-      padding: clamp(2.5rem, 5vw, 4.5rem);
+      min-width: 0;
+      height: 100vh;
+      padding: clamp(2rem, 4vw, 4rem);
       color: var(--white);
-      background: linear-gradient(155deg,
-                  #0b3a5b 0%,
-                  #12578a 60%,
-                  #1769aa 100%);
+      background:
+            linear-gradient(145deg,
+                  rgba(0, 107, 45, 0.93) 0%,
+                  rgba(0, 136, 58, 0.91) 55%,
+                  rgba(20, 148, 71, 0.92) 100%),
+            url("background.jpg") center center / cover no-repeat;
 }
 
 /* Hospital Brand */
@@ -106,20 +110,26 @@ a {
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 800;
 }
 
 .brand-mark {
-      width: 40px;
-      height: 40px;
+      width: 56px;
+      height: 56px;
       flex-shrink: 0;
       display: grid;
       place-items: center;
-      border-radius: 9px;
+      border-radius: 10px;
       background: var(--white);
-      color: var(--blue);
-      font-size: 1.1rem;
+      overflow: hidden;
+}
+
+.brand-mark img {
+      width: 50px;
+      height: 50px;
+      display: block;
+      object-fit: contain;
 }
 
 .brand-name {
@@ -127,6 +137,7 @@ a {
 }
 
 /* Hero Content */
+
 .hero-content {
       position: relative;
       z-index: 2;
@@ -136,11 +147,12 @@ a {
 
 .hero h1 {
       max-width: 12ch;
-      margin: clamp(2rem, 6vh, 4rem) 0 1.1rem;
-      font-size: clamp(2.5rem, 4.2vw, 3.6rem);
+      margin: clamp(2rem, 5vh, 3.5rem) 0 1.1rem;
+      font-size: clamp(2.5rem, 4vw, 3.6rem);
       font-weight: 800;
       line-height: 1.02;
       letter-spacing: -0.035em;
+      text-shadow: 0 2px 12px rgba(0, 60, 30, 0.25);
 }
 
 .hero p {
@@ -148,7 +160,8 @@ a {
       font-size: 0.95rem;
       font-weight: 500;
       line-height: 1.55;
-      color: #d3e6f5;
+      color: rgba(255, 255, 255, 0.92);
+      text-shadow: 0 1px 6px rgba(0, 60, 30, 0.25);
 }
 
 /* Hero Footer */
@@ -158,119 +171,123 @@ a {
       z-index: 2;
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem 3.5rem;
+      align-items: center;
+      gap: 1rem 3rem;
       margin-top: auto;
-      padding-top: 2rem;
+      padding-top: 1.5rem;
 }
+
+/* Hero Badges */
 
 .hero-badge {
       display: flex;
-      flex-direction: column;
-      gap: 0.05rem;
-      color: #b9d5ea;
-      font-size: 0.85rem;
+      align-items: center;
+      gap: 0.75rem;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.8rem;
       line-height: 1.4;
 }
 
-.hero-badge strong {
-      color: var(--white);
-      font-size: 1.05rem;
-      font-weight: 800;
+.badge-icon {
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      border-radius: 9px;
+      background: var(--white);
+      color: var(--green);
+      font-size: 1rem;
+      box-shadow: 0 3px 12px rgba(0, 60, 30, 0.12);
 }
 
-/* Medical Graphic for Hero */
-.hero-graphic {
-      position: absolute;
-      right: -75px;
-      bottom: -70px;
-      width: 390px;
-      height: 390px;
+.badge-details {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      pointer-events: none;
-      color: rgba(255, 255, 255, 0.14);
-      font-size: 175px;
+      flex-direction: column;
+      gap: 0.05rem;
 }
 
-.hero-graphic::before {
-      content: "";
-      position: absolute;
-      width: 120px;
-      height: 335px;
-      border: 6px solid rgba(255, 255, 255, 0.10);
+.badge-details strong {
+      color: var(--white);
+      font-size: 0.95rem;
+      font-weight: 800;
+      line-height: 1.2;
+      text-shadow: 0 1px 5px rgba(0, 60, 30, 0.2);
 }
 
-.hero-graphic::after {
-      content: "";
-      position: absolute;
-      width: 335px;
-      height: 120px;
-      border: 6px solid rgba(255, 255, 255, 0.10);
-}
-
-.hero-graphic i {
-      position: relative;
-      z-index: 2;
-      color: rgba(255, 255, 255, 0.12);
+.badge-details span {
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.75rem;
+      font-weight: 500;
+      line-height: 1.35;
 }
 
 /* Right Login Panel */
+
 .login-panel {
       display: grid;
       place-items: center;
-      min-height: 100vh;
-      padding: 2rem 1.5rem;
+      width: 100%;
+      height: 100vh;
+      padding: 2rem clamp(1.5rem, 4vw, 4rem);
       background: var(--white);
+      overflow: hidden;
 }
 
 /* Login Card */
+
 .card {
       width: 100%;
       max-width: 420px;
 }
 
 /* Login Header */
+
 .card-header h2 {
       margin-bottom: 0.35rem;
       font-size: 2rem;
-      font-weight: 700;
+      font-weight: 800;
       line-height: 1.15;
       letter-spacing: -0.025em;
-      color: var(--ink);
+      color: var(--text);
 }
 
 .card-header p {
-      margin-bottom: 2rem;
+      margin-bottom: 1.8rem;
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 500;
+      line-height: 1.55;
 }
 
 /* Form Alert */
+
 .alert {
-      margin-bottom: 1.25rem;
-      padding: 0.75rem 0.95rem;
-      border-radius: 6px;
+      margin-bottom: 1rem;
+      padding: 0.7rem 0.9rem;
+      border: 1px solid #f5c2c0;
+      border-radius: 7px;
       background: var(--bad-bg);
       color: var(--bad);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
 }
 
-/* Form Fields*/
+/* Form Fields */
+
 .field {
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.1rem;
 }
 
 .field>label {
       display: block;
       margin-bottom: 0.4rem;
-      color: var(--ink);
-      font-size: 0.82rem;
+      color: var(--text);
+      font-size: 0.8rem;
       font-weight: 700;
 }
 
-/* Input Wrapper*/
+/* Input Wrapper */
+
 .input-wrapper {
       position: relative;
 }
@@ -279,38 +296,42 @@ a {
       width: 100%;
       min-height: 48px;
       padding: 0.7rem 2.8rem;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      background: var(--green-soft);
+      color: var(--text);
       font-size: 0.9rem;
       outline: none;
       transition:
             border-color 0.15s ease,
-            box-shadow 0.15s ease;
+            box-shadow 0.15s ease,
+            background 0.15s ease;
 }
 
 .input-wrapper input::placeholder {
-      color: #8795a1;
+      color: #89968f;
 }
 
 .input-wrapper input:focus {
-      border-color: var(--blue);
-      box-shadow:
-            0 0 0 3px rgba(23, 105, 170, 0.12);
+      border-color: var(--green);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(0, 136, 58, 0.12);
 }
 
 /* Input Icon */
+
 .input-icon {
       position: absolute;
       left: 0.85rem;
       top: 50%;
       transform: translateY(-50%);
-      color: #6d7c89;
+      color: var(--green);
       pointer-events: none;
       z-index: 2;
 }
 
-/* PASSWORD TOGGLE */
+/* Password Toggle */
+
 .toggle-password {
       position: absolute;
       top: 50%;
@@ -321,32 +342,34 @@ a {
       display: grid;
       place-items: center;
       border-radius: 6px;
-      color: #6d7c89;
+      color: #698075;
 }
 
 .toggle-password:hover {
-      color: var(--ink);
+      color: var(--green);
 }
 
 .toggle-password:focus-visible {
-      outline: 2px solid var(--blue);
+      outline: 2px solid var(--green);
       outline-offset: -2px;
 }
 
 /* Error Message */
+
 .error-message {
       margin-top: 0.3rem;
       color: var(--bad);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
 }
 
 /* Remember Me / Forgot Password */
+
 .form-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.3rem;
 }
 
 .checkbox-label {
@@ -354,29 +377,30 @@ a {
       align-items: center;
       gap: 0.5rem;
       color: var(--muted);
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       cursor: pointer;
 }
 
 .checkbox-label input {
       width: 15px;
       height: 15px;
-      accent-color: var(--blue);
+      accent-color: var(--green);
       cursor: pointer;
 }
 
 .forgot-link {
-      color: var(--blue);
-      font-size: 0.82rem;
-      font-weight: 600;
+      color: var(--green);
+      font-size: 0.8rem;
+      font-weight: 700;
       text-decoration: underline;
 }
 
 .forgot-link:hover {
-      color: var(--blue-dark);
+      color: var(--green-dark);
 }
 
 /* Sign-In Button */
+
 .btn {
       width: 100%;
       min-height: 48px;
@@ -384,18 +408,21 @@ a {
       align-items: center;
       justify-content: center;
       gap: 0.6rem;
-      border-radius: 6px;
-      background: var(--blue);
+      border-radius: 7px;
       color: var(--white);
       font-size: 0.9rem;
-      font-weight: 700;
+      font-weight: 800;
       transition:
             background 0.15s ease,
             transform 0.1s ease;
 }
 
-.btn:hover {
-      background: var(--blue-dark);
+.btn-primary {
+      background: var(--green);
+}
+
+.btn-primary:hover {
+      background: var(--green-dark);
 }
 
 .btn:active {
@@ -403,8 +430,7 @@ a {
 }
 
 .btn:disabled {
-      opacity: 0.8;
-
+      opacity: 0.75;
       cursor: progress;
 }
 
@@ -414,11 +440,12 @@ a {
 }
 
 /* Loading Spinner */
+
 .spinner {
       width: 18px;
       height: 18px;
       border: 2px solid rgba(255, 255, 255, 0.4);
-      border-top-color: #fff;
+      border-top-color: var(--white);
       border-radius: 50%;
       animation: spin 0.7s linear infinite;
 }
@@ -430,11 +457,12 @@ a {
 }
 
 /* Footer */
+
 .card-footer {
-      margin-top: 1.6rem;
+      margin-top: 1.4rem;
       text-align: center;
       color: var(--muted);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
 }
 
 .card-footer small {
@@ -444,19 +472,28 @@ a {
 /* Responsive - Tablet */
 
 @media (max-width: 900px) {
+
+      html,
+      body {
+            overflow: auto;
+      }
+
       .login-container {
-            grid-template-columns: 1fr;
+            display: block;
+            height: auto;
+            min-height: 100vh;
+            overflow: visible;
       }
 
       .hero {
-            min-height: auto;
-
+            height: auto;
+            min-height: 440px;
             padding: 2rem 1.5rem 2.5rem;
       }
 
       .hero-content {
-            margin-top: 2rem;
-            margin-bottom: 2rem;
+            margin-top: 2.5rem;
+            margin-bottom: 2.5rem;
       }
 
       .hero h1 {
@@ -469,30 +506,34 @@ a {
             padding-top: 0;
       }
 
-      .hero-graphic {
-            right: -100px;
-            bottom: -100px;
-            opacity: 0.7;
-      }
-
       .login-panel {
-            min-height: auto;
+            height: auto;
+            min-height: 560px;
             padding: 3rem 1.5rem;
+            overflow: visible;
       }
 }
 
 /* Responsive Mobile */
+
 @media (max-width: 480px) {
+
       .brand {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
       }
 
       .brand-mark {
-            width: 36px;
-            height: 36px;
+            width: 50px;
+            height: 50px;
+      }
+
+      .brand-mark img {
+            width: 45px;
+            height: 45px;
       }
 
       .hero {
+            min-height: 390px;
             padding: 1.5rem 1.25rem 2rem;
       }
 
@@ -501,18 +542,21 @@ a {
       }
 
       .hero p {
-            font-size: 0.88rem;
+            font-size: 0.86rem;
       }
 
       .hero-foot {
-            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.9rem;
       }
 
-      .hero-graphic {
-            display: none;
+      .hero-badge {
+            width: 100%;
       }
 
       .login-panel {
+            min-height: 540px;
             padding: 2rem 1.25rem 3rem;
       }
 
@@ -526,6 +570,7 @@ a {
 }
 
 /* Reduce Motion */
+
 @media (prefers-reduced-motion: reduce) {
 
       *,
