@@ -1,583 +1,661 @@
-/* ! MRDH STAFF LOGIN PAGE */
+/* Sign Up Page for MetroDocs Equipment Tracking */
 
-/* Global Variables */
+/* Global Reset */
 
-:root {
-      --green: #00883a;
-      --green-dark: #006b2d;
-      --green-soft: #eef8f1;
-      --text: #1f2933;
-      --muted: #667085;
-      --border: #c8d8ce;
-      --white: #ffffff;
-      --bad: #b42318;
-      --bad-bg: #fef3f2;
-}
-
-/* Reset */
-
-*,
-*::before,
-*::after {
+* {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
 }
 
-html,
-body {
-      width: 100%;
-      height: 100%;
+/* Global Variables */
+
+:root {
+      --green: #009b43;
+      --green-dark: #00883b;
+      --green-light: #e9f7ef;
+
+      --navy: #10233d;
+      --text: #34445a;
+      --muted: #68778b;
+
+      --border: #c6dccf;
+      --white: #ffffff;
 }
 
-html {
-      overflow: hidden;
-}
+/* Body */
 
 body {
       min-height: 100vh;
+
       font-family: "Manrope", sans-serif;
-      font-optical-sizing: auto;
-      color: var(--text);
+
+      color: var(--navy);
+
       background: var(--white);
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      overflow: hidden;
 }
 
-button,
-input {
-      font: inherit;
-      color: inherit;
-}
-
-button {
-      border: 0;
-      background: none;
-      cursor: pointer;
-}
-
-a {
-      color: var(--green);
-}
-
-[hidden] {
-      display: none !important;
-}
-
-*:focus-visible {
-      outline: 3px solid rgba(0, 136, 58, 0.3);
-      outline-offset: 2px;
-}
-
-/* Split-Screen Layout */
+/* Split Layout */
 
 .login-container {
       display: grid;
-      grid-template-columns: 1.08fr 1fr;
-      width: 100%;
-      height: 100vh;
+
+      grid-template-columns: 52% 48%;
+
       min-height: 100vh;
-      overflow: hidden;
 }
 
 /* Left Hero Panel */
 
 .hero {
       position: relative;
-      overflow: hidden;
+
       display: flex;
       flex-direction: column;
+
       justify-content: space-between;
-      min-width: 0;
-      height: 100vh;
-      padding: clamp(2rem, 4vw, 4rem);
+
+      min-height: 100vh;
+
+      padding: clamp(2rem, 4vw, 3rem);
+
+      overflow: hidden;
+
       color: var(--white);
+
       background:
-            linear-gradient(145deg,
-                  rgba(0, 107, 45, 0.93) 0%,
-                  rgba(0, 136, 58, 0.91) 55%,
-                  rgba(20, 148, 71, 0.92) 100%),
+            linear-gradient(135deg,
+                  rgba(0, 151, 66, 0.88),
+                  rgba(0, 171, 73, 0.78)),
             url("background.jpg") center center / cover no-repeat;
 }
+
+/* Hero Overlay */
+
+.hero::before {
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      background: rgba(0, 145, 62, 0.16);
+
+      pointer-events: none;
+}
+
+
+.hero::after {
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      background: linear-gradient(180deg,
+                  rgba(0, 91, 42, 0.18) 0%,
+                  rgba(0, 150, 65, 0.05) 50%,
+                  rgba(0, 77, 36, 0.22) 100%);
+
+      pointer-events: none;
+}
+
 
 /* Hospital Brand */
 
 .brand {
       position: relative;
+
       z-index: 2;
+
       display: flex;
+
       align-items: center;
-      gap: 0.75rem;
-      font-size: 1rem;
-      font-weight: 800;
+
+      gap: 0.65rem;
 }
 
+
+/* Smaller Logo */
+
 .brand-mark {
-      width: 56px;
-      height: 56px;
+      width: 42px;
+      height: 42px;
+
       flex-shrink: 0;
-      display: grid;
-      place-items: center;
-      border-radius: 10px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 4px;
+
+      border-radius: 8px;
+
       background: var(--white);
+
       overflow: hidden;
 }
 
+
 .brand-mark img {
-      width: 50px;
-      height: 50px;
-      display: block;
+      width: 100%;
+      height: 100%;
+
       object-fit: contain;
+
+      display: block;
 }
+
+
+/* Smaller Hospital Name */
 
 .brand-name {
       white-space: nowrap;
+
+      font-size: 0.85rem;
+
+      font-weight: 800;
+
+      letter-spacing: -0.02em;
 }
+
 
 /* Hero Content */
 
 .hero-content {
       position: relative;
+
       z-index: 2;
+
+      width: min(100%, 570px);
+
       margin-top: auto;
       margin-bottom: auto;
+
+      padding: 2rem 0;
 }
 
-.hero h1 {
-      max-width: 12ch;
-      margin: clamp(2rem, 5vh, 3.5rem) 0 1.1rem;
-      font-size: clamp(2.5rem, 4vw, 3.6rem);
+
+/* Main Hero Title */
+
+.hero-content h1 {
+      max-width: 520px;
+
+      font-size: clamp(3rem, 5vw, 4.4rem);
+
+      line-height: 0.98;
+
       font-weight: 800;
-      line-height: 1.02;
-      letter-spacing: -0.035em;
-      text-shadow: 0 2px 12px rgba(0, 60, 30, 0.25);
+
+      letter-spacing: -0.055em;
 }
 
-.hero p {
-      max-width: 43ch;
-      font-size: 0.95rem;
-      font-weight: 500;
-      line-height: 1.55;
-      color: rgba(255, 255, 255, 0.92);
-      text-shadow: 0 1px 6px rgba(0, 60, 30, 0.25);
-}
 
-/* Hero Footer */
+/* Hero Features */
 
 .hero-foot {
       position: relative;
-      z-index: 2;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 1rem 3rem;
-      margin-top: auto;
-      padding-top: 1.5rem;
-}
 
-/* Hero Badges */
+      z-index: 2;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: clamp(2rem, 5vw, 4.5rem);
+
+      padding-top: 1rem;
+}
 
 .hero-badge {
       display: flex;
+
       align-items: center;
+
       gap: 0.75rem;
-      color: rgba(255, 255, 255, 0.82);
-      font-size: 0.8rem;
-      line-height: 1.4;
 }
 
 .badge-icon {
       width: 42px;
       height: 42px;
+
       flex-shrink: 0;
-      display: grid;
-      place-items: center;
-      border-radius: 9px;
-      background: var(--white);
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 10px;
+
       color: var(--green);
+
+      background: var(--white);
+
       font-size: 1rem;
-      box-shadow: 0 3px 12px rgba(0, 60, 30, 0.12);
 }
 
 .badge-details {
       display: flex;
+
       flex-direction: column;
-      gap: 0.05rem;
+
+      gap: 0.1rem;
 }
 
 .badge-details strong {
-      color: var(--white);
       font-size: 0.95rem;
+
       font-weight: 800;
-      line-height: 1.2;
-      text-shadow: 0 1px 5px rgba(0, 60, 30, 0.2);
 }
 
 .badge-details span {
-      color: rgba(255, 255, 255, 0.82);
-      font-size: 0.75rem;
-      font-weight: 500;
-      line-height: 1.35;
+      font-size: 0.78rem;
+
+      line-height: 1.4;
+
+      color: rgba(255, 255, 255, 0.9);
 }
 
-/* Right Login Panel */
+/* Right Sign In Panel */
 
 .login-panel {
-      display: grid;
-      place-items: center;
-      width: 100%;
-      height: 100vh;
-      padding: 2rem clamp(1.5rem, 4vw, 4rem);
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      min-height: 100vh;
+
+      padding: 3rem clamp(2rem, 7vw, 6rem);
+
       background: var(--white);
-      overflow: hidden;
 }
 
-/* Login Card */
+/* Sign In Card */
 
 .card {
       width: 100%;
+
       max-width: 420px;
 }
 
-/* Login Header */
+/* Sign In Header */
+
+.card-header {
+      margin-bottom: 2rem;
+}
 
 .card-header h2 {
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.4rem;
+
       font-size: 2rem;
+
+      line-height: 1.2;
+
       font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -0.025em;
-      color: var(--text);
+
+      letter-spacing: -0.035em;
+
+      color: var(--navy);
 }
+
 
 .card-header p {
-      margin-bottom: 1.8rem;
-      color: var(--muted);
+      max-width: 390px;
+
       font-size: 0.88rem;
-      font-weight: 500;
-      line-height: 1.55;
+
+      line-height: 1.6;
+
+      color: var(--muted);
 }
 
-/* Form Alert */
-
-.alert {
-      margin-bottom: 1rem;
-      padding: 0.7rem 0.9rem;
-      border: 1px solid #f5c2c0;
-      border-radius: 7px;
-      background: var(--bad-bg);
-      color: var(--bad);
-      font-size: 0.85rem;
-}
 
 /* Form Fields */
 
 .field {
-      margin-bottom: 1.1rem;
+      margin-bottom: 1.35rem;
 }
 
-.field>label {
+
+.field label {
       display: block;
-      margin-bottom: 0.4rem;
-      color: var(--text);
+
+      margin-bottom: 0.55rem;
+
       font-size: 0.8rem;
+
       font-weight: 700;
+
+      color: var(--navy);
 }
+
 
 /* Input Wrapper */
 
 .input-wrapper {
       position: relative;
+
+      display: flex;
+
+      align-items: center;
 }
 
-.input-wrapper input {
-      width: 100%;
-      min-height: 48px;
-      padding: 0.7rem 2.8rem;
-      border: 1px solid var(--border);
-      border-radius: 7px;
-      background: var(--green-soft);
-      color: var(--text);
-      font-size: 0.9rem;
-      outline: none;
-      transition:
-            border-color 0.15s ease,
-            box-shadow 0.15s ease,
-            background 0.15s ease;
-}
-
-.input-wrapper input::placeholder {
-      color: #89968f;
-}
-
-.input-wrapper input:focus {
-      border-color: var(--green);
-      background: var(--white);
-      box-shadow: 0 0 0 3px rgba(0, 136, 58, 0.12);
-}
 
 /* Input Icon */
 
 .input-icon {
       position: absolute;
-      left: 0.85rem;
-      top: 50%;
-      transform: translateY(-50%);
+
+      left: 1rem;
+
+      z-index: 1;
+
       color: var(--green);
+
+      font-size: 0.9rem;
+
       pointer-events: none;
-      z-index: 2;
 }
+
+
+/* Inputs */
+
+.input-wrapper input {
+      width: 100%;
+
+      height: 48px;
+
+      padding: 0 2.8rem;
+
+      border: 1px solid var(--border);
+
+      border-radius: 7px;
+
+      outline: none;
+
+      font-family: inherit;
+
+      font-size: 0.88rem;
+
+      color: var(--navy);
+
+      background: #edf4ff;
+
+      transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease;
+}
+
+
+/* Input Focus */
+
+.input-wrapper input:focus {
+      border-color: var(--green);
+
+      box-shadow:
+            0 0 0 3px rgba(0, 155, 67, 0.1);
+}
+
+
+/* Placeholder */
+
+.input-wrapper input::placeholder {
+      color: #7b8797;
+}
+
 
 /* Password Toggle */
 
 .toggle-password {
       position: absolute;
-      top: 50%;
-      right: 2px;
-      width: 44px;
-      height: 44px;
-      transform: translateY(-50%);
-      display: grid;
-      place-items: center;
-      border-radius: 6px;
-      color: #698075;
+
+      right: 0.85rem;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      width: 30px;
+      height: 30px;
+
+      border: 0;
+
+      color: #628197;
+
+      background: transparent;
+
+      cursor: pointer;
+
+      font-size: 0.95rem;
 }
 
-.toggle-password:hover {
-      color: var(--green);
-}
-
-.toggle-password:focus-visible {
-      outline: 2px solid var(--green);
-      outline-offset: -2px;
-}
 
 /* Error Message */
 
 .error-message {
-      margin-top: 0.3rem;
-      color: var(--bad);
-      font-size: 0.78rem;
+      margin-top: 0.35rem;
+
+      font-size: 0.75rem;
+
+      color: #c62828;
 }
+
 
 /* Remember Me / Forgot Password */
 
 .form-row {
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.3rem;
+
+      margin: 0.1rem 0 1.4rem;
 }
+
 
 .checkbox-label {
       display: flex;
+
       align-items: center;
+
       gap: 0.5rem;
+
+      font-size: 0.75rem;
+
       color: var(--muted);
-      font-size: 0.8rem;
+
       cursor: pointer;
 }
+
 
 .checkbox-label input {
       width: 15px;
       height: 15px;
+
       accent-color: var(--green);
-      cursor: pointer;
 }
 
+
 .forgot-link {
-      color: var(--green);
-      font-size: 0.8rem;
+      font-size: 0.75rem;
+
       font-weight: 700;
+
+      color: var(--green);
+
       text-decoration: underline;
 }
 
-.forgot-link:hover {
-      color: var(--green-dark);
-}
 
-/* Sign-In Button */
+/* Sign In Button*/
 
 .btn {
       width: 100%;
-      min-height: 48px;
+
+      height: 48px;
+
       display: flex;
+
       align-items: center;
       justify-content: center;
-      gap: 0.6rem;
+
+      gap: 0.65rem;
+
+      border: 0;
+
       border-radius: 7px;
-      color: var(--white);
+
+      font-family: inherit;
+
       font-size: 0.9rem;
+
       font-weight: 800;
-      transition:
-            background 0.15s ease,
-            transform 0.1s ease;
+
+      cursor: pointer;
 }
 
+
 .btn-primary {
+      color: var(--white);
+
       background: var(--green);
+
+      transition:
+            background 0.2s ease,
+            transform 0.2s ease;
 }
+
 
 .btn-primary:hover {
       background: var(--green-dark);
 }
 
-.btn:active {
+
+.btn-primary:active {
       transform: translateY(1px);
 }
 
-.btn:disabled {
-      opacity: 0.75;
-      cursor: progress;
-}
 
 .btn-icon {
-      display: flex;
-      align-items: center;
+      font-size: 0.85rem;
 }
 
-/* Loading Spinner */
-
-.spinner {
-      width: 18px;
-      height: 18px;
-      border: 2px solid rgba(255, 255, 255, 0.4);
-      border-top-color: var(--white);
-      border-radius: 50%;
-      animation: spin 0.7s linear infinite;
-}
-
-@keyframes spin {
-      to {
-            transform: rotate(360deg);
-      }
-}
 
 /* Footer */
 
 .card-footer {
-      margin-top: 1.4rem;
+      margin-top: 1.35rem;
+
       text-align: center;
+}
+
+
+.card-footer small {
+      font-size: 0.72rem;
+
+      line-height: 1.5;
+
       color: var(--muted);
+}
+
+
+/* Alert */
+
+.alert {
+      margin-bottom: 1rem;
+
+      padding: 0.75rem 0.9rem;
+
+      border-radius: 6px;
+
       font-size: 0.78rem;
 }
 
-.card-footer small {
-      font-size: inherit;
-}
 
 /* Responsive - Tablet */
 
 @media (max-width: 900px) {
 
-      html,
-      body {
-            overflow: auto;
+      .login-container {
+            grid-template-columns: 1fr;
       }
 
-      .login-container {
-            display: block;
-            height: auto;
-            min-height: 100vh;
-            overflow: visible;
-      }
 
       .hero {
-            height: auto;
-            min-height: 440px;
-            padding: 2rem 1.5rem 2.5rem;
+            min-height: auto;
+
+            padding: 2rem;
       }
+
 
       .hero-content {
-            margin-top: 2.5rem;
-            margin-bottom: 2.5rem;
+            padding: 4rem 0 3rem;
       }
 
-      .hero h1 {
-            max-width: 15ch;
-            margin: 0 0 1rem;
-            font-size: 2.5rem;
+
+      .hero-content h1 {
+            max-width: 600px;
+
+            font-size: clamp(2.8rem, 8vw, 4rem);
       }
 
-      .hero-foot {
-            padding-top: 0;
-      }
 
       .login-panel {
-            height: auto;
-            min-height: 560px;
-            padding: 3rem 1.5rem;
-            overflow: visible;
+            min-height: auto;
+
+            padding: 3rem 2rem;
       }
+
 }
 
-/* Responsive Mobile */
 
-@media (max-width: 480px) {
+/* Responsive - Mobile */
 
-      .brand {
-            font-size: 0.9rem;
-      }
-
-      .brand-mark {
-            width: 50px;
-            height: 50px;
-      }
-
-      .brand-mark img {
-            width: 45px;
-            height: 45px;
-      }
+@media (max-width: 600px) {
 
       .hero {
-            min-height: 390px;
-            padding: 1.5rem 1.25rem 2rem;
+            padding: 1.5rem;
       }
 
-      .hero h1 {
-            font-size: 2.15rem;
+
+      .brand-mark {
+            width: 40px;
+            height: 40px;
       }
 
-      .hero p {
-            font-size: 0.86rem;
+
+      .brand-name {
+            font-size: 0.8rem;
       }
+
+
+      .hero-content {
+            padding: 3rem 0 2.5rem;
+      }
+
+
+      .hero-content h1 {
+            font-size: 2.8rem;
+      }
+
 
       .hero-foot {
             flex-direction: column;
+
             align-items: flex-start;
-            gap: 0.9rem;
+
+            gap: 1.25rem;
       }
 
-      .hero-badge {
-            width: 100%;
-      }
 
       .login-panel {
-            min-height: 540px;
-            padding: 2rem 1.25rem 3rem;
+            padding: 2.5rem 1.5rem;
       }
 
-      .card-header h2 {
-            font-size: 1.75rem;
-      }
-
-      .form-row {
-            align-items: flex-start;
-      }
-}
-
-/* Reduce Motion */
-
-@media (prefers-reduced-motion: reduce) {
-
-      *,
-      *::before,
-      *::after {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-      }
 }
